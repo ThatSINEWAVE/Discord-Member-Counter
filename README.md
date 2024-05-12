@@ -27,6 +27,26 @@ This project provides a simple web interface to display information about a Disc
 4. The interface will display the total members and online members of the server.
 5. The information will update automatically every 30 seconds.
 
+### Using Locally
+
+1. Clone this repository to your local machine.
+2. Open the `index.html` file in a web browser.
+3. Input the server invite link into the designated field.
+4. Click the "Send" button.
+5. The interface will display the total members and online members of the server.
+6. The information will update automatically every 30 seconds.
+
+## File Structure
+
+```
+Discord-Member-Counter/
+│
+├── index.html         # HTML file for the web interface
+├── script.js          # JavaScript file for functionality
+├── styles.css         # CSS file for styling
+└── site-data/         # Directory for site data (favicon, icons)
+```
+
 ## Contributing
 
 If you find any issues or have suggestions for improvements, feel free to contribute by submitting a pull request or opening an issue on GitHub.
