@@ -1,18 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Discord Server Member Counter</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Discord Member Counter</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-..."
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="site-data/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="site-data/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="site-data/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="site-data/favicon-16x16.png">
+    <link rel="manifest" href="site-data/site.webmanifest">
+  </head>
+
+  <body>
+
+    <header>
+      <div class="header-left">
+        <h1>Discord Member Counter</h1>
+      </div>
+      <div class="header-right">
+        <div class="btn-group">
+          <a href="https://github.com/ThatSINEWAVE/DIscord-Member-Counter" class="btn">
+            <i class="fab fa-github"></i> GitHub
+          </a>
+          <a href="https://ko-fi.com/thatsinewave" class="btn">
+            <i class="fas fa-heart"></i> Support
+          </a>
+          <a href="https://discord.gg/2nHHHBWNDw" class="btn">
+            <i class="fab fa-discord"></i> Discord
+          </a>
+        </div>
+      </div>
+    </header>
+
     <div class="container">
-        <h1>Discord Server Member Counter</h1>
-        <input type="text" id="serverInput" placeholder="Enter server ID or invite link">
+      <div class="content">
+        <input
+          type="text"
+          id="serverInput"
+          placeholder="Enter server invite link"
+        />
         <button id="sendButton">Send</button>
-        <div id="memberCounter" class="hidden"></div>
+        <div id="serverInfo" class="hidden">
+          <h2 id="serverName"></h2>
+          <div class="counter-container">
+            <div class="counter total-members">
+              <h3>TOTAL MEMBERS</h3>
+              <span id="memberCounter"></span>
+            </div>
+            <div class="counter online-members">
+              <h3>ONLINE MEMBERS</h3>
+              <span id="onlineMemberCounter"></span>
+            </div>
+          </div>
+          <div class="timer-container">
+            <span id="countdownTimer"></span>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <footer>
+      <div class="theme-switch">
+        <i class="fas fa-sun theme-icon"></i>
+        <label class="switch">
+          <input type="checkbox" id="themeSwitch" />
+          <span class="slider"></span>
+        </label>
+        <i class="fas fa-moon theme-icon"></i>
+      </div>
+    </footer>
+
     <script src="script.js"></script>
-</body>
+
+  </body>
+
 </html>
