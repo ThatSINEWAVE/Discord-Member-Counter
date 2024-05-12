@@ -1,8 +1,15 @@
 const serverInput = document.getElementById('serverInput');
 const sendButton = document.getElementById('sendButton');
+const serverInfo = document.getElementById('serverInfo');
+const serverName = document.getElementById('serverName');
 const memberCounter = document.getElementById('memberCounter');
+const onlineMemberCounter = document.getElementById('onlineMemberCounter');
+const countdownTimer = document.getElementById('countdownTimer');
+const themeSwitch = document.getElementById('themeSwitch');
 
 let intervalId;
+let countdownTimerId;
+let remainingTime = 30000; // 30 seconds
 
 sendButton.addEventListener('click', () => {
     const inputValue = serverInput.value.trim();
@@ -12,6 +19,11 @@ sendButton.addEventListener('click', () => {
     } else {
         showError('Invalid invite URL or code');
     }
+});
+
+// Theme Switch
+themeSwitch.addEventListener('change', () => {
+    document.body.classList.toggle('light');
 });
 
 function extractInviteCode(input) {
@@ -27,8 +39,9 @@ function fetchServerData(inviteCode) {
         .then(response => response.json())
         .then(data => {
             if (data.guild) {
-                updateMemberCounter(data);
+                updateServerInfo(data);
                 startUpdateInterval(inviteCode);
+                startCountdownTimer();
             } else {
                 showError('Invalid invite code');
             }
@@ -39,11 +52,13 @@ function fetchServerData(inviteCode) {
         });
 }
 
-function updateMemberCounter(serverData) {
+function updateServerInfo(serverData) {
+    serverName.textContent = serverData.guild.name;
     const totalMembers = serverData.approximate_member_count;
     const onlineMembers = serverData.approximate_presence_count;
-    memberCounter.textContent = `Members: ${totalMembers} (${onlineMembers} online)`;
-    memberCounter.classList.remove('hidden');
+    memberCounter.textContent = `${totalMembers}`;
+    onlineMemberCounter.textContent = `${onlineMembers}`;
+    serverInfo.classList.remove('hidden');
 }
 
 function startUpdateInterval(inviteCode) {
@@ -53,7 +68,26 @@ function startUpdateInterval(inviteCode) {
     }, 30000); // Update every 30 seconds
 }
 
+function startCountdownTimer() {
+    clearInterval(countdownTimerId);
+    countdownTimerId = setInterval(updateCountdownTimer, 1000);
+}
+
+function updateCountdownTimer() {
+    const minutes = Math.floor(remainingTime / 60000);
+    const seconds = Math.floor((remainingTime % 60000) / 1000);
+    countdownTimer.textContent = `Next update in: ${minutes}:${seconds.toString().padStart(2, '0')}`;
+
+    remainingTime -= 1000;
+    if (remainingTime <= 0) {
+        remainingTime = 30000; // Reset to 30 seconds
+        clearInterval(countdownTimerId);
+    }
+}
+
 function showError(message) {
+    serverInfo.classList.add('hidden');
     memberCounter.textContent = message;
-    memberCounter.classList.remove('hidden');
+    onlineMemberCounter.textContent = '';
+    countdownTimer.textContent = '';
 }
