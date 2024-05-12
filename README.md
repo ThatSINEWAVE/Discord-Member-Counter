@@ -4,6 +4,8 @@
 
 This project provides a simple web interface to display information about a Discord server's member count. Users can input a server invite link, and the interface will show the total members and online members in real-time.
 
+![Discord-Member-Counter](https://github.com/ThatSINEWAVE/DIscord-Member-Counter/assets/133239148/0440303b-a95a-452f-a894-629b8e73c7a1)
+
 </div>
 
 ## Features
