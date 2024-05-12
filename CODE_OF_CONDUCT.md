@@ -1,6 +1,6 @@
 <div align="center">
 
-# Code of Conduct - DIscord-Live-Member-Counter
+# Code of Conduct - DIscord-Member-Counter
 
 </div>
 
