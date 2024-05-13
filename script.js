@@ -53,12 +53,32 @@ function fetchServerData(inviteCode) {
 }
 
 function updateServerInfo(serverData) {
-    serverName.textContent = serverData.guild.name;
-    const totalMembers = serverData.approximate_member_count;
-    const onlineMembers = serverData.approximate_presence_count;
+  const serverIconUrl = `https://cdn.discordapp.com/icons/${serverData.guild.id}/${serverData.guild.icon}`;
+  const serverIcon = document.getElementById('serverIcon');
+  serverIcon.src = serverIconUrl;
+
+  serverName.textContent = serverData.guild.name;
+  const totalMembers = serverData.approximate_member_count;
+  const onlineMembers = serverData.approximate_presence_count;
+
+  const prevTotalMembers = parseInt(memberCounter.textContent) || 0;
+  const prevOnlineMembers = parseInt(onlineMemberCounter.textContent) || 0;
+
+  if (totalMembers !== prevTotalMembers) {
+    memberCounter.classList.remove('animate__animated', 'animate__flipInY');
+    void memberCounter.offsetWidth; // Trigger a reflow
+    memberCounter.classList.add('animate__animated', 'animate__flipInY');
     memberCounter.textContent = `${totalMembers}`;
+  }
+
+  if (onlineMembers !== prevOnlineMembers) {
+    onlineMemberCounter.classList.remove('animate__animated', 'animate__flipInY');
+    void onlineMemberCounter.offsetWidth; // Trigger a reflow
+    onlineMemberCounter.classList.add('animate__animated', 'animate__flipInY');
     onlineMemberCounter.textContent = `${onlineMembers}`;
-    serverInfo.classList.remove('hidden');
+  }
+
+  serverInfo.classList.remove('hidden');
 }
 
 function startUpdateInterval(inviteCode) {
