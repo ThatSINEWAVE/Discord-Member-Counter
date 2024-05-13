@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Discord Member Counter</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
@@ -49,7 +50,10 @@
         />
         <button id="sendButton">Send</button>
         <div id="serverInfo" class="hidden">
-          <h2 id="serverName"></h2>
+          <div class="server-info-header">
+            <img id="serverIcon" src="" alt="Server Icon" />
+            <h2 id="serverName"></h2>
+          </div>
           <div class="counter-container">
             <div class="counter total-members">
               <h3>TOTAL MEMBERS</h3>
