@@ -256,8 +256,16 @@ body.light button:hover {
 }
 
 body.light .counter {
-  background-color: #e6e6e6;
+  background-color: #5865F2;
   color: black;
+}
+
+body.light .counter h3 {
+  color: white;
+}
+
+body.light .counter span {
+  color: white;
 }
 
 body.light #countdownTimer {
